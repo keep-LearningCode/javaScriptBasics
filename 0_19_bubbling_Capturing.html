@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evrnt Bubbling and Capturing</title>
+    <style>
+     .container{
+        display:none;
+     }
+    </style>
+</head>
+<body>
+    <button>Display video</button>
+    <div class="container">
+        <video width="640" height="360" controls>
+            <source src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_30mb.mp4"
+            type="video/mp4" />
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+            <source src="https://sample-videos.com/video321/mkv/720/big_buck_bunny_720p_1mb.mkv" type="video/mlv">
+            <p>
+                Your browser doesn't support HTML video. Here is a
+                <a href="rabbit320.mp4">link to the video</a> instead.
+              </p>
+        </video>
+    </div>
+</body>
+<script>
+    const box= document.querySelector("div");
+    document.querySelector("button").addEventListener('click',()=>box.classList.remove("container"));
+    document.querySelector("video").addEventListener('click', (e)=>{
+        e.stopPropagation();
+        video.play()});
+    box.addEventListener('click', ()=>box.classList.add("container"))
+</script>
+</html>
