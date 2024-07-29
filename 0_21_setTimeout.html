@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout()</title>
+</head>
+<body>
+    <h1>Test setTimeout function</h1>
+    <button>Stop</button>
+</body>
+<script>
+    const checkTime=function(value){
+        console.log(`${value}`, Date.now());
+        document.querySelector('h1').innerHTML='updated text';
+    }
+    const hello= setTimeout(checkTime, 3000, 'Hi');
+    document.querySelector('button').addEventListener('click', function(){
+        clearTimeout(hello);
+        console.log('stopped')
+    })
+    </Script>
+</html>

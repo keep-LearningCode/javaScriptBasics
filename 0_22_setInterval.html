@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval function</title>
+</head>
+<body>
+    <h1>SetInterval function</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const getTime= function(){
+        console.log(Date.now())
+        let date=Date.now();
+        document.querySelector('h1').innerHTML=`Current Time : ${date}`;
+    }
+let startInterval;
+    document.querySelector('#start').addEventListener('click', function(){
+        if(!startInterval){
+        startInterval = setInterval(getTime,2000);
+        }
+    })
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearInterval(startInterval);
+        console.log('stop');
+        startInterval = null;
+    })
+
+
+</script>
+</html>

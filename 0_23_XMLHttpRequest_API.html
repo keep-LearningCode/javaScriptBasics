@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: darkgray;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <Button class="btn">Click Me to Get Data</Button>
+</div>
+</body>
+<script>
+    const url='https://randomuser.me/api/';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',url);
+    console.log(xhr.readyState);
+    let data;
+    xhr.onreadystatechange =function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            data= JSON.parse(this.responseText)
+            console.log(data);
+            console.log(typeof data);
+            console.log(data.results[0].phone)
+        }
+        return data;
+    }
+    xhr.send();
+console.log(xhr.onreadystatechange())
+    document.querySelector('.btn').addEventListener('click', function(){
+document.querySelector('.box').innerHTML =`<div>Clicked
+    <table>
+  <tr>
+    <th>Phone</th>
+    <th>Picture</th>
+    <th>Info</th>
+  </tr>
+  <tr>
+    <td>${data.results[0].phone}</td>
+    <td><img src="${data.results[0].picture.large}" /></td>
+    <td>${data.info.seed}</td>
+  </tr>
+</table>
+    </div>`;
+    })
+</script>
+</html>
